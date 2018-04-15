@@ -5,9 +5,9 @@ const { Provider } = Context;
 export default class extends Component {
   state = {
     item: {
-      menu: "",
+      menu: "home",
       path: "",
-      label: "home"
+      label: ""
     }
   };
 

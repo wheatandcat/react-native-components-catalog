@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components/primitives";
 import { View } from "react-primitives";
+import { StyleSheet, ScrollView } from "react-native";
 import { Link } from "react-router-native";
 import { ListItem, Divider } from "react-native-elements";
 import { Consumer } from "../containers/Provider";
@@ -36,24 +37,34 @@ export default class extends Component {
         <Consumer>
           {({ setItem }) => (
             <View>
-              {this.state.menus.map((menu, i) => (
-                <View key={i}>
-                  <Text>{menu}</Text>
-                  <Divider style={{ backgroundColor: "#ccc" }} />
-                  {this.state.items
-                    .filter(item => item.menu === menu)
-                    .map((item, i) => (
-                      <Link
-                        key={`${menu}_${i}`}
-                        to={`/${item.path}`}
-                        onPress={() => setItem(item)}
-                      >
-                        <ListItem key={i} title={item.label} />
-                      </Link>
-                    ))}
-                  <Divider style={{ backgroundColor: "#ddd", height: 15 }} />
-                </View>
-              ))}
+              <ScrollView contentContainerStyle={styles.contentContainer}>
+                {this.state.menus.map((menu, i) => (
+                  <View key={i}>
+                    <Text>{menu}</Text>
+                    <Divider style={{ backgroundColor: "#ccc" }} />
+                    {this.state.items
+                      .filter(item => item.menu === menu)
+                      .map((item, i) => (
+                        <Link
+                          key={`${menu}_${i}`}
+                          to={`/${item.path}`}
+                          onPress={() => setItem(item)}
+                        >
+                          <View>
+                            <ListItem
+                              key={i}
+                              title={item.label}
+                              rightIcon={{ name: "chevron-right" }}
+                            />
+                            <Divider style={{ backgroundColor: "#ccc" }} />
+                          </View>
+                        </Link>
+                      ))}
+                    <Divider style={{ backgroundColor: "#ddd", height: 15 }} />
+                  </View>
+                ))}
+                <View style={{ height: 150, backgroundColor: "#ddd" }} />
+              </ScrollView>
             </View>
           )}
         </Consumer>
@@ -73,6 +84,12 @@ const arrayColumn = async (items, key) => {
 
   return result;
 };
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingVertical: 20
+  }
+});
 
 const Text = styled.Text`
   font-size: 30;

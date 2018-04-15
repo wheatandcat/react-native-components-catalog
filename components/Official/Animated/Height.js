@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-primitives";
 import { Button } from "react-native";
 
-export default class App extends React.Component {
+export default class App extends Component {
   state = {
     height: 0,
     setTimeout: null,
