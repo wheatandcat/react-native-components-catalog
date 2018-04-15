@@ -6,3 +6,5 @@ export default class App extends React.Component {
     return <Routers />;
   }
 }
+
+console.disableYellowBox = true;

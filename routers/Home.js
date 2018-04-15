@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components/primitives";
 import { View } from "react-primitives";
 import { Link } from "react-router-native";
-import { ListItem } from "react-native-elements";
+import { ListItem, Divider } from "react-native-elements";
+import { Consumer } from "../containers/Provider";
 import list from "./paths";
 
 export default class extends Component {
@@ -12,7 +13,6 @@ export default class extends Component {
   };
 
   async componentDidMount() {
-    console.log("componentDidMount");
     const items = await list.map(item => ({
       ...item,
       menu: item.path.substr(0, item.path.indexOf("/"))
@@ -33,18 +33,30 @@ export default class extends Component {
 
     return (
       <View>
-        {this.state.menus.map((menu, i) => (
-          <View key={i}>
-            <Text>{menu}</Text>
-            {this.state.items
-              .filter(item => item.menu === menu)
-              .map((item, i) => (
-                <Link key={`${menu}_${i}`} to={`/${item.path}`}>
-                  <ListItem key={i} title={item.title} />
-                </Link>
+        <Consumer>
+          {({ setItem }) => (
+            <View>
+              {this.state.menus.map((menu, i) => (
+                <View key={i}>
+                  <Text>{menu}</Text>
+                  <Divider style={{ backgroundColor: "#ccc" }} />
+                  {this.state.items
+                    .filter(item => item.menu === menu)
+                    .map((item, i) => (
+                      <Link
+                        key={`${menu}_${i}`}
+                        to={`/${item.path}`}
+                        onPress={() => setItem(item)}
+                      >
+                        <ListItem key={i} title={item.label} />
+                      </Link>
+                    ))}
+                  <Divider style={{ backgroundColor: "#ddd", height: 15 }} />
+                </View>
               ))}
-          </View>
-        ))}
+            </View>
+          )}
+        </Consumer>
       </View>
     );
   }
@@ -63,7 +75,9 @@ const arrayColumn = async (items, key) => {
 };
 
 const Text = styled.Text`
-  font-size: 25;
+  font-size: 30;
   color: palevioletred;
   margin-left: 15;
+  margin-top: 5;
+  margin-bottom: 5;
 `;
