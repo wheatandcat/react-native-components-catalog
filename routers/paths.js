@@ -11,6 +11,14 @@ import ReactNativeElementsCheckBox from "../components/reactNativeElements/Check
 import ReactNativeElementsIcon from "../components/reactNativeElements/Icon";
 import ReactNativeElementsInput from "../components/reactNativeElements/Input";
 import ReactNativeElementsListItem from "../components/reactNativeElements/ListItem";
+import ReactNativeElementsOverlay from "../components/reactNativeElements/Overlay";
+import ReactNativeElementsPricing from "../components/reactNativeElements/Pricing";
+import ReactNativeElementsRating from "../components/reactNativeElements/Rating";
+import ReactNativeElementsSearchBar from "../components/reactNativeElements/SearchBar";
+import ReactNativeElementsSlider from "../components/reactNativeElements/Slider";
+import ReactNativeElementsSocialIcon from "../components/reactNativeElements/SocialIcon";
+import ReactNativeElementsText from "../components/reactNativeElements/Text";
+import ReactNativeElementsTile from "../components/reactNativeElements/Tile";
 
 export default [
   {
@@ -72,5 +80,45 @@ export default [
     label: "ListItem",
     path: "react-native-elements/ListItem",
     component: ReactNativeElementsListItem
+  },
+  {
+    label: "Overlay",
+    path: "react-native-elements/Overlay",
+    component: ReactNativeElementsOverlay
+  },
+  {
+    label: "PricingCard",
+    path: "react-native-elements/PricingCard",
+    component: ReactNativeElementsPricing
+  },
+  {
+    label: "Rating",
+    path: "react-native-elements/Rating",
+    component: ReactNativeElementsRating
+  },
+  {
+    label: "SearchBar",
+    path: "react-native-elements/SearchBar",
+    component: ReactNativeElementsSearchBar
+  },
+  {
+    label: "Slider",
+    path: "react-native-elements/Slider",
+    component: ReactNativeElementsSlider
+  },
+  {
+    label: "SocialIcon",
+    path: "react-native-elements/SocialIcon",
+    component: ReactNativeElementsSocialIcon
+  },
+  {
+    label: "Text",
+    path: "react-native-elements/Text",
+    component: ReactNativeElementsText
+  },
+  {
+    label: "Tile",
+    path: "react-native-elements/Tile",
+    component: ReactNativeElementsTile
   }
 ];
