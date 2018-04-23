@@ -3,14 +3,16 @@ import styled from "styled-components/primitives";
 import { View } from "react-primitives";
 import { StyleSheet, ScrollView } from "react-native";
 import { Link } from "react-router-native";
-import { ListItem, Divider } from "react-native-elements";
+import { ListItem, Divider, Button } from "react-native-elements";
+import Collapsible from "react-native-collapsible";
 import { Consumer } from "../containers/Provider";
 import list from "./paths";
 
 export default class extends Component {
   state = {
     items: null,
-    menus: null
+    menus: null,
+    opens: [0]
   };
 
   async componentDidMount() {
@@ -27,6 +29,20 @@ export default class extends Component {
     });
   }
 
+  onPress = async index => {
+    let opens = await this.state.opens;
+
+    if (this.state.opens.indexOf(index) === -1) {
+      opens = await [...this.state.opens, index];
+    } else {
+      opens = await opens.filter(item => item !== index);
+    }
+
+    this.setState({
+      opens
+    });
+  };
+
   render() {
     if (this.state.menus === null) {
       return null;
@@ -40,27 +56,35 @@ export default class extends Component {
               <ScrollView contentContainerStyle={styles.contentContainer}>
                 {this.state.menus.map((menu, i) => (
                   <View key={i}>
-                    <Text>{menu}</Text>
+                    <Text onPress={() => this.onPress(i)}>{menu}</Text>
                     <Divider style={{ backgroundColor: "#ccc" }} />
-                    {this.state.items
-                      .filter(item => item.menu === menu)
-                      .map((item, i) => (
-                        <Link
-                          key={`${menu}_${i}`}
-                          to={`/${item.path}`}
-                          onPress={() => setItem(item)}
-                        >
-                          <View>
-                            <ListItem
-                              key={i}
-                              title={item.label}
-                              rightIcon={{ name: "chevron-right" }}
-                            />
-                            <Divider style={{ backgroundColor: "#ccc" }} />
-                          </View>
-                        </Link>
-                      ))}
-                    <Divider style={{ backgroundColor: "#ddd", height: 15 }} />
+                    <Collapsible
+                      collapsed={
+                        this.state.opens.indexOf(i) === -1 ? true : false
+                      }
+                    >
+                      <View key={i}>
+                        {this.state.items
+                          .filter(item => item.menu === menu)
+                          .map((item, i) => (
+                            <Link
+                              key={`${menu}_${i}`}
+                              to={`/${item.path}`}
+                              onPress={() => setItem(item)}
+                            >
+                              <View>
+                                <ListItem
+                                  key={i}
+                                  title={item.label}
+                                  rightIcon={{ name: "chevron-right" }}
+                                />
+                                <Divider style={{ backgroundColor: "#ccc" }} />
+                              </View>
+                            </Link>
+                          ))}
+                      </View>
+                    </Collapsible>
+                    <Divider style={{ backgroundColor: "#ddd", height: 1 }} />
                   </View>
                 ))}
                 <View style={{ height: 150, backgroundColor: "#ddd" }} />

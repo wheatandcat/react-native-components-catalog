@@ -20,6 +20,10 @@ import ReactNativeElementsSocialIcon from "../components/reactNativeElements/Soc
 import ReactNativeElementsText from "../components/reactNativeElements/Text";
 import ReactNativeElementsTile from "../components/reactNativeElements/Tile";
 
+import ReactNativeCollapsible from "../components/reactNativeCollapsible/Collapsible";
+import ReactNativeCollapsible2 from "../components/reactNativeCollapsible/Collapsible2";
+import ReactNativeCollapsibleAccordion from "../components/reactNativeCollapsible/Accordion";
+
 export default [
   {
     label: "HeightAndWidth",
@@ -120,5 +124,20 @@ export default [
     label: "Tile",
     path: "react-native-elements/Tile",
     component: ReactNativeElementsTile
+  },
+  {
+    label: "Collapsible",
+    path: "react-native-collapsible/Collapsible",
+    component: ReactNativeCollapsible
+  },
+  {
+    label: "Collapsible2",
+    path: "react-native-collapsible/Collapsible2",
+    component: ReactNativeCollapsible2
+  },
+  {
+    label: "Accordion",
+    path: "react-native-collapsible/Accordion",
+    component: ReactNativeCollapsibleAccordion
   }
 ];
