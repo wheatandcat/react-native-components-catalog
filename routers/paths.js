@@ -24,6 +24,10 @@ import ReactNativeCollapsible from "../components/reactNativeCollapsible/Collaps
 import ReactNativeCollapsible2 from "../components/reactNativeCollapsible/Collapsible2";
 import ReactNativeCollapsibleAccordion from "../components/reactNativeCollapsible/Accordion";
 
+import ReactNativeCalendars from "../components/reactNativeCalendars/Calendars";
+import ReactNativeCalendarList from "../components/reactNativeCalendars/CalendarList";
+import ReactNativeCalendarListHorizontal from "../components/reactNativeCalendars/CalendarListHorizontal";
+
 export default [
   {
     label: "HeightAndWidth",
@@ -139,5 +143,20 @@ export default [
     label: "Accordion",
     path: "react-native-collapsible/Accordion",
     component: ReactNativeCollapsibleAccordion
+  },
+  {
+    label: "Calendars",
+    path: "react-native-calendars/Calendars",
+    component: ReactNativeCalendars
+  },
+  {
+    label: "CalendarList",
+    path: "react-native-calendars/CalendarList",
+    component: ReactNativeCalendarList
+  },
+  {
+    label: "Horizontal",
+    path: "react-native-calendars/Horizontal",
+    component: ReactNativeCalendarListHorizontal
   }
 ];
