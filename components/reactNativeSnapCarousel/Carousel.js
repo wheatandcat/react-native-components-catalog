@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Dimensions from "Dimensions";
 import styled from "styled-components/native";
 import Carousel from "react-native-snap-carousel";
 
@@ -62,6 +62,7 @@ export default class ThumbnailCarousel extends Component {
 
   render = () => {
     console.log("videos: updating");
+    const sliderWidth = Dimensions.get("window").width;
 
     return (
       <CarouselBackgroundView>
@@ -72,7 +73,7 @@ export default class ThumbnailCarousel extends Component {
           data={this.state.videos}
           renderItem={this._renderItem.bind(this)}
           onSnapToItem={this.handleSnapToItem.bind(this)}
-          sliderWidth={360}
+          sliderWidth={sliderWidth}
           itemWidth={256}
           layout={"default"}
           firstItem={0}
