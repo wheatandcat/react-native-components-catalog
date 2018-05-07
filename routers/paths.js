@@ -28,7 +28,18 @@ import ReactNativeCalendars from "../components/reactNativeCalendars/Calendars";
 import ReactNativeCalendarList from "../components/reactNativeCalendars/CalendarList";
 import ReactNativeCalendarListHorizontal from "../components/reactNativeCalendars/CalendarListHorizontal";
 
+import ReactNativeUiLibActionSheet from "../components/reactNativeUiLib/ActionSheet";
+import ReactNativeUiLibConnectionStatusBar from "../components/reactNativeUiLib/ConnectionStatusBar";
+import ReactNativeUiLibTagsInput from "../components/reactNativeUiLib/TagsInput";
+
+import ReactNativeSnapCarousel from "../components/reactNativeSnapCarousel/Carousel";
+
 export default [
+  {
+    label: "Carousel",
+    path: "react-native-snap-carousel/Carousel",
+    component: ReactNativeSnapCarousel
+  },
   {
     label: "HeightAndWidth",
     path: "official/heightAndWidth/fixedDimensions",
@@ -158,5 +169,20 @@ export default [
     label: "Horizontal",
     path: "react-native-calendars/Horizontal",
     component: ReactNativeCalendarListHorizontal
+  },
+  {
+    label: "ActionSheet",
+    path: "react-native-ui-lib/ActionSheet",
+    component: ReactNativeUiLibActionSheet
+  },
+  {
+    label: "ConnectionStatusBar",
+    path: "react-native-ui-lib/ConnectionStatusBar",
+    component: ReactNativeUiLibConnectionStatusBar
+  },
+  {
+    label: "TagsInput",
+    path: "react-native-ui-lib/TagsInput",
+    component: ReactNativeUiLibTagsInput
   }
 ];
